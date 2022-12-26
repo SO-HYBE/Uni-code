@@ -17,7 +17,9 @@ int main () {
         }
         if(bigger>=maximum){
             maximum = bigger;
-        } else if(smaller<=minimum){
+        };
+        
+        if(smaller<=minimum){
             minimum = smaller;
         }
         sum+=x;

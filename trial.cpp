@@ -4,7 +4,7 @@
 using namespace std;
 
 int main () {
-    int myArr[20], x , y = 0, bigger = 0, smaller = 0, maximum = 0 , minimum , sum=0, average;
+    int myArr[20], x , bigger = 0, smaller = 0, maximum = 0 , minimum = 999, sum=0, average;
 
     for(int i=0; i<20; i++){
        cout<<"Please enter 20 numbers: ";
@@ -13,9 +13,7 @@ int main () {
     }
 
     for(int i=0; i<20; i++){
-        if(i+1==20){
-            break;
-        } else {
+        if(i+1<20){
           if(myArr[i]<=myArr[i+1]){
             bigger = myArr[i+1];
             smaller = myArr[i];
@@ -23,12 +21,17 @@ int main () {
             bigger = myArr[i];
             smaller = myArr[i+1];
         };
+        
          if(bigger>=maximum){
             maximum = bigger;
-        } else if(smaller<=minimum){
+        };
+
+         if(minimum>=smaller){
             minimum = smaller;
         }
-        sum+=myArr[i];  
+        sum+=myArr[i];     
+        } else {
+          break;
         }
        
     }
