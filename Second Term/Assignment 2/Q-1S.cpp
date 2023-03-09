@@ -21,17 +21,21 @@ void arrMaker(int *arr, int n){
     if(next<current){
       greater = current;
       smaller = next;
+    cout<<greater<<"     "<<smaller<<endl;
     } else {
       greater = next;
       smaller = current;
+    cout<<greater<<"     "<<smaller<<endl;
     };
 
     if(greater>=greatest){
         greatest = greater;
+        cout<<greater<<"    "<<greatest<<endl;
     };
     
     if(smaller<=smallest){
       smallest = smaller;
+      cout<<smaller<<"    "<<smallest<<endl;
     };
 
     }
