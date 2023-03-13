@@ -4,7 +4,7 @@
 using namespace std;
 
 int main () {
-    int x , y = 0, bigger = 0, smaller = 0, maximum = 0 , minimum = 0, sum=0, average;
+    int x , y = 0, bigger = 0, smaller = 0, maximum = 0 , minimum, sum=0, average;
     for(int i=0; i<10; i++){
         cout<<"Please enter a number: "<<endl;
         cin>>x;

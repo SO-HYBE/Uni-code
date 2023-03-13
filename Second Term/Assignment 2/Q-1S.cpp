@@ -5,44 +5,37 @@ using namespace std;
 int n,*arr;
 void arrMaker(int *arr, int n){
 
-    int greater,smaller,greatest=0,smallest;
-
     for(int i = 0; i < n ; i++){
         cin>>*(arr+i);
-    }
+    }    
+    
+    int greater=0,smaller=0;
 
-    for(int i = 0; i < n; i++){
+    greater = arr[0];
+    for(int i = 1; i < n; i++){
     
     int current = *(arr+i);
-    int next = *(arr+i+1);
-
-    if(current<n){
-
-    if(next<current){
-      greater = current;
-      smaller = next;
-    cout<<greater<<"     "<<smaller<<endl;
-    } else {
-      greater = next;
-      smaller = current;
-    cout<<greater<<"     "<<smaller<<endl;
-    };
-
-    if(greater>=greatest){
-        greatest = greater;
-        cout<<greater<<"    "<<greatest<<endl;
+    
+    if(current>greater){
+        greater = current;
     };
     
-    if(smaller<=smallest){
-      smallest = smaller;
-      cout<<smaller<<"    "<<smallest<<endl;
+    }
+    
+    smaller = arr[0];
+    
+    for(int i = 1; i < n; i++){
+    
+    int current = *(arr+i);
+    
+    if(current<smaller){
+      smaller = current;
     };
 
     }
 
-    }
-    cout<<"The greatest numbered entered is: "<<greatest<<endl;
-    cout<<"The smallest numbered entered is: "<<smallest<<endl;
+    cout<<"The greatest numbered entered is: "<<greater<<endl;
+    cout<<"The smallest numbered entered is: "<<smaller<<endl;
 }
 
 int main() {
