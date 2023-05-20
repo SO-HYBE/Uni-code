@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-void desc(int start, int end){
+void desc(int end, int start){
     for(int i=end; i>=start;i--){
         for(int j=0; j<i;j++){
             cout<<"#";
@@ -21,7 +21,7 @@ void asc(int start, int end){
 
 
 int main(){
-    desc(5,8);
+    desc(8,5);
     cout<<"reverse"<<endl;
     asc(3,5);
     cout<<"again"<<endl;
