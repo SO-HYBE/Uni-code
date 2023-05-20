@@ -1,31 +1,43 @@
 #include<iostream>
 using namespace std;
 
-int lPower(int n, int m){
-    int result=1;
-    for(int i=1; i<=m; i++){
-        result = result*n;
+void read(int *p , int n){
+    for(int i=0; i<n; i++){
+        cin>>*(p+i);
     }
-    return result;
 }
 
-int rPower(int n , int m){
-    int result;
-    if(m==0){
-        return 1;
-    } else {
-        result = n * rPower(n,m-1);
+void compare(int *p, int n){
+    int great, small, greatest=-99999, smallest=99999;
+    for(int i=0 ; i<n; i++){
+        if(*(p+i)>=*(p+i+1)){
+            great = *(p+i);
+            small = *(p+i+1);
+        } else {
+            great = *(p+i+1);
+            small = *(p+i);
+        }
+
+        if(great >= greatest){
+            greatest = great;
+        }
+        if(small <=smallest) {
+            smallest = small;
+        }
     }
-    return result;
+    cout<<"The greatest number of the given numbers is: "<<greatest<<endl;
+    cout<<"The smallest number of the given numbers is: "<<smallest<<endl;
 }
 
 int main(){
-    int x, y;
-    cout<<"enter the base of the power: "<<endl;
-    cin>>x;
-    cout<<"enter the power of the power: "<<endl;
-    cin>>y;
-    cout<<"The result using loops: "<<lPower(x,y)<<endl;
-    cout<<"The result using recursion: "<<rPower(x,y);
+    int size;
+    int *p;
+    cout<<"Please enter the size of the array: "<<endl;
+    cin>>size;
+    p = new int[size];
+    cout<<"enter the desired numbers: "<<endl;
+    read(p, size);
+    compare(p, size);
+
     return 0;
 }
