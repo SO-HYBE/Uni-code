@@ -1,20 +1,28 @@
 #include<iostream>
+#include<string.h>
 using namespace std;
 
 int main(){
-    string original, nString, comparison;
-    comparison = "SoftwareTestingHelp";
-    cout<<"enter a string: "<<endl;
-    getline( cin, original);
-    cout<<"The length of the string is: "<<original.length()<<endl;
-    if(original==comparison){
-        cout<<"Two strings are equal"<<endl;
-    } else {
-        cout<<"Two strings are not equal"<<endl;
-    }
-    comparison += ".com";
+    char name[9][10]= {"mona", "bahaa", "tarek", "ali", "ahmed", "tamer", "samir", "sameh", "nadir" };
+    char temp[10];
+    int min;
 
-    cout<<"The length of string \" "<<comparison<<" \" is: "<<comparison.size();
+    for(int i = 0; i<=7; i++){
+        min = i;
+        for(int j = i+1;j<=8;j++){
+            if(strcmp(name[min],name[j])>0){
+                min = j;
+            }
+        }
+        strcpy(temp,name[i]);
+        strcpy(name[i],name[min]);
+        strcpy(name[min],temp);
+
+    }
+
+    for(int i=0; i<=8; i++){
+        cout<<name[i]<<endl;
+    }
 
     return 0;
 }
