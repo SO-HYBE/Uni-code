@@ -3,26 +3,16 @@
 using namespace std;
 
 int main(){
-    char name[9][10]= {"mona", "bahaa", "tarek", "ali", "ahmed", "tamer", "samir", "sameh", "nadir" };
-    char temp[10];
-    int min;
+    string original, reversed;
 
-    for(int i = 0; i<=7; i++){
-        min = i;
-        for(int j = i+1;j<=8;j++){
-            if(strcmp(name[min],name[j])>0){
-                min = j;
-            }
-        }
-        strcpy(temp,name[i]);
-        strcpy(name[i],name[min]);
-        strcpy(name[min],temp);
+    cout<<"Enter a string to be reversed: "<<endl;
+    getline(cin, original);
 
+    for(int i = original.length()-1; i>=0; i--){
+        reversed += original [i];
     }
-
-    for(int i=0; i<=8; i++){
-        cout<<name[i]<<endl;
-    }
+    
+    cout<<"The reversed string is: "<<reversed;
 
     return 0;
 }
