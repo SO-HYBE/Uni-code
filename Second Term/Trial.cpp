@@ -1,18 +1,37 @@
-#include<iostream>
-#include<string.h>
+#include <iostream>
+#include <cstring>
+#include <cctype>
+
 using namespace std;
 
-int main(){
-    string original, reversed;
+int main() {
+    string str;
+    cout<<"Enter a string to get sorted: "<<endl;
+    cin>>str;
+    const char* cstr = str.c_str();
+    int length = str.length();
 
-    cout<<"Enter a string to be reversed: "<<endl;
-    getline(cin, original);
+    char sortedStr[length + 1];
+    int sortedIndex = 0;
 
-    for(int i = original.length()-1; i>=0; i--){
-        reversed += original [i];
+    for (int i = 0; i < length; i++) {
+        if (isalpha(cstr[i])) {
+            sortedStr[sortedIndex] = cstr[i];
+            sortedIndex++;
+        }
     }
-    
-    cout<<"The reversed string is: "<<reversed;
+
+    for (int i = 0; i < sortedIndex - 1; i++) {
+        for (int j = i + 1; j < sortedIndex; j++) {
+            if (strcmp(&sortedStr[i], &sortedStr[j]) > 0) {
+                char temp = sortedStr[i];
+                sortedStr[i] = sortedStr[j];
+                sortedStr[j] = temp;
+            }
+        }
+    }
+
+    cout << "Sorted string: " << sortedStr << endl;
 
     return 0;
 }
