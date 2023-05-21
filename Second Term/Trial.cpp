@@ -1,43 +1,20 @@
 #include<iostream>
 using namespace std;
 
-void read(int *p , int n){
-    for(int i=0; i<n; i++){
-        cin>>*(p+i);
-    }
-}
-
-void compare(int *p, int n){
-    int great, small, greatest=-99999, smallest=99999;
-    for(int i=0 ; i<n; i++){
-        if(*(p+i)>=*(p+i+1)){
-            great = *(p+i);
-            small = *(p+i+1);
-        } else {
-            great = *(p+i+1);
-            small = *(p+i);
-        }
-
-        if(great >= greatest){
-            greatest = great;
-        }
-        if(small <=smallest) {
-            smallest = small;
-        }
-    }
-    cout<<"The greatest number of the given numbers is: "<<greatest<<endl;
-    cout<<"The smallest number of the given numbers is: "<<smallest<<endl;
-}
-
 int main(){
-    int size;
-    int *p;
-    cout<<"Please enter the size of the array: "<<endl;
-    cin>>size;
-    p = new int[size];
-    cout<<"enter the desired numbers: "<<endl;
-    read(p, size);
-    compare(p, size);
+    string original, nString, comparison;
+    comparison = "SoftwareTestingHelp";
+    cout<<"enter a string: "<<endl;
+    getline( cin, original);
+    cout<<"The length of the string is: "<<original.length()<<endl;
+    if(original==comparison){
+        cout<<"Two strings are equal"<<endl;
+    } else {
+        cout<<"Two strings are not equal"<<endl;
+    }
+    comparison += ".com";
+
+    cout<<"The length of string \" "<<comparison<<" \" is: "<<comparison.size();
 
     return 0;
 }
