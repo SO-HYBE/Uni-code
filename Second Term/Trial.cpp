@@ -1,37 +1,44 @@
 #include <iostream>
-#include <cstring>
-#include <cctype>
-
 using namespace std;
 
-int main() {
-    string str;
-    cout<<"Enter a string to get sorted: "<<endl;
-    cin>>str;
-    const char* cstr = str.c_str();
-    int length = str.length();
+struct Employee {
+    int emp_id;
+    string emp_name;
+    int emp_salary;
+};
 
-    char sortedStr[length + 1];
-    int sortedIndex = 0;
+void read(struct Employee emp[],int len){
+    for(int i=0;i<len;i++){
+    cout<<"Enter the ID , NAME , SALARY of employee "<<i+1<<" : "<<endl;
+    cin>>emp[i].emp_id;
+    cin>>emp[i].emp_name;
+    cin>>emp[i].emp_salary;
+    }
+}
 
-    for (int i = 0; i < length; i++) {
-        if (isalpha(cstr[i])) {
-            sortedStr[sortedIndex] = cstr[i];
-            sortedIndex++;
+
+void search(struct Employee emp[], int id, int len){
+    for(int i=0; i<len; i++){
+        if(emp[i].emp_id == id){
+            cout<<"The Employee ID entered was found in the array!"<<endl<<emp[i].emp_id<<endl;
+        } else {
+            cout<<"The Employee ID entered was not found in the array."<<endl;
         }
     }
+}
 
-    for (int i = 0; i < sortedIndex - 1; i++) {
-        for (int j = i + 1; j < sortedIndex; j++) {
-            if (strcmp(&sortedStr[i], &sortedStr[j]) > 0) {
-                char temp = sortedStr[i];
-                sortedStr[i] = sortedStr[j];
-                sortedStr[j] = temp;
-            }
-        }
+
+int main(){
+    struct Employee empl[2];
+
+    read(empl, 2);
+
+    for(int i = 0 ; i<2; i++){
+        cout<<empl[i].emp_id<<endl;
+        cout<<empl[i].emp_name<<endl;
+        cout<<empl[i].emp_salary<<endl;
     }
-
-    cout << "Sorted string: " << sortedStr << endl;
-
-    return 0;
+    
+    
+    search(empl, 2, 2);
 }
