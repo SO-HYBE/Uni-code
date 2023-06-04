@@ -7,14 +7,14 @@ using namespace std;
 int arr[10] = {-10, -3, 7, 12, 13, 18 , 20 , 22 , 24 ,25};
 
 int binary (int low, int high, int key){
-    while(low<=high){
+    if(low<=high){
         int mid = (low + high)/2;
         if(arr[mid] == key){
             return mid;
         } else if(arr[mid]>key){
-            high = mid - 1;
+            return binary(low,mid - 1,key);
         } else {
-            low = mid + 1;
+            return binary(mid + 1, high,key);
         }
     }
     return -1;
@@ -28,7 +28,7 @@ int main () {
     if(result == -1){
         cout<<"Error: The key was not found inside the array!";
     } else {
-        cout<<"The key was found inside the array!!!";
+        cout<<"The key was found inside the array at index: "<<result;
     }
     
 }
