@@ -4,31 +4,23 @@
 #include<cstdlib>
 using namespace std;
 
-int arr[10] = {-10, -3, 7, 12, 13, 18 , 20 , 22 , 24 ,25};
-
-int binary (int low, int high, int key){
-    if(low<=high){
-        int mid = (low + high)/2;
-        if(arr[mid] == key){
-            return mid;
-        } else if(arr[mid]>key){
-            return binary(low,mid - 1,key);
-        } else {
-            return binary(mid + 1, high,key);
-        }
-    }
-    return -1;
-}
-
 int main () {
-    int key;
-    cout<<"Enter the key you want to search inside the array: ";
-    cin>>key;
-    int result = binary(0,9,key);
-    if(result == -1){
-        cout<<"Error: The key was not found inside the array!";
-    } else {
-        cout<<"The key was found inside the array at index: "<<result;
+    char original[5][10], capital[5][10];
+    cout<<"Enter 5 names: ";
+    for(int i = 0; i<5; i++){
+        cin>>original[i];
+        strcpy(capital[i],original[i]);
     }
-    
+    for(int i =0;i<5;i++){
+        capital[i][0] = toupper(capital[i][0]);
+    }
+        cout<<"The original array is: "<<endl;
+    for(int i = 0; i<5;i++){
+        cout<<original[i]<<endl;
+    }
+        cout<<"The capital array is: "<<endl;
+    for(int i = 0; i<5;i++){
+        cout<<capital[i]<<endl;
+    }
+
 }

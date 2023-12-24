@@ -12,19 +12,6 @@
       "compilerArgs": [
         ""
       ]
-    },
-    {
-      "name": "winlab",
-      "includePath": [
-        "${workspaceFolder}/**"
-      ],
-      "defines": [
-        "_DEBUG",
-        "UNICODE",
-        "_UNICODE"
-      ],
-      "compilerPath": "gcc",
-      "intelliSenseMode": "windows-msvc-x64"
     }
   ],
   "version": 4

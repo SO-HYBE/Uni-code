@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "d:/HYBE/Projects/Uni-code/Second Term/Assignment 1",
-      "program": "d:/HYBE/Projects/Uni-code/Second Term/Assignment 1/build/Debug/outDebug",
+      "cwd": "e:/HYBE/Projects/Uni-code",
+      "program": "e:/HYBE/Projects/Uni-code/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
