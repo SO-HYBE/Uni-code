@@ -1,45 +1,44 @@
 #include<iostream>
 using namespace std;
 
-void heapify(int arr[], int size, int i){
-    int maxel = i;
-    int l = 2 * i + 1;
-    int r = 2 * i + 2;
+int Partition(int arr[], int beg, int end){
+    int i = beg;
+    int j = end;
+    int pivot = i;
 
-    if (l < size && arr[l] > arr[maxel]) maxel = l;
-    if (r < size && arr[r] > arr[maxel]) maxel = r;
+    while(true){
 
-    if (maxel != i){
-        swap(arr[i], arr[maxel]);
-        heapify(arr, size, maxel);
+        while(arr[pivot]<=arr[j] && j!=pivot) j--;
+
+        if(j==pivot) {
+            break;
+        } else if (arr[pivot]>arr[j]){
+            swap(arr[pivot],arr[j]);
+            pivot = j;
+        }
+
+        while(arr[pivot]>=arr[i] && i!=pivot) i++;
+
+        if(i==pivot) {
+            break;
+        } else if (arr[pivot]<arr[i]){
+            swap(arr[pivot], arr[i]);
+            pivot = i;
+        }
+    }
+    return pivot;
+}
+
+void QuickSort(int arr[], int l, int r){
+    if(l<r){
+        int p = Partition(arr,l,r);
+        QuickSort(arr,l,p-1);
+        QuickSort(arr,p+1,r);
     }
 }
-void buildHeap (int arr[], int size){
-    for(int i = (size/2)-1; i>=0; i--) heapify(arr, size, i);
-}
 
-void heapSort(int arr[], int size){
-    buildHeap(arr, size);
-    for(int i = size-1; i>=0; i--){
-        swap(arr[0],arr[i]);
-        heapify(arr,i, 0);
-    }
-}
-
-int main (){
-    int size;
-    cout<<"Enter the size of an array: "<<endl;
-    cin>>size;
-
-    int arr[size];
-    cout<<"enter the values of the array:"<<endl;
-    for(int i = 0; i<size; i++){
-        cin>>arr[i];
-    }
-    heapSort(arr, size);
-    for(int i = 0; i<size; i++){
-        cout<<arr[i]<<" ";
-    }
-
-    return 0;
+int main () {
+    int arr [] = {12,53,22,10,2};
+    QuickSort(arr,0,4);
+    for(int i = 0; i<=4;i++) cout<<arr[i]<<" ";
 }
