@@ -1,44 +1,32 @@
 #include<iostream>
 using namespace std;
 
-int Partition(int arr[], int beg, int end){
-    int i = beg;
-    int j = end;
-    int pivot = i;
+void CountSort(int arr[], int size){
+    int freq[1000]={};
+    for(int i=0; i<size;i++) freq[arr[i]]++;
 
-    while(true){
+    int prefix[1000];
+    prefix[0] = freq[0];
+    for(int i = 1; i<1000;i++) prefix[i] = prefix[i-1] + freq[i];
 
-        while(arr[pivot]<=arr[j] && j!=pivot) j--;
-
-        if(j==pivot) {
-            break;
-        } else if (arr[pivot]>arr[j]){
-            swap(arr[pivot],arr[j]);
-            pivot = j;
-        }
-
-        while(arr[pivot]>=arr[i] && i!=pivot) i++;
-
-        if(i==pivot) {
-            break;
-        } else if (arr[pivot]<arr[i]){
-            swap(arr[pivot], arr[i]);
-            pivot = i;
-        }
+    int output[size];
+    for(int i=size-1; i>=0;i--){
+        int k = prefix[arr[i]];
+        output[k-1] = arr[i];
+        prefix[arr[i]] -= 1;
     }
-    return pivot;
-}
 
-void QuickSort(int arr[], int l, int r){
-    if(l<r){
-        int p = Partition(arr,l,r);
-        QuickSort(arr,l,p-1);
-        QuickSort(arr,p+1,r);
+    for(int i=0;i<size;i++){
+        arr[i]=output[i];
     }
 }
 
-int main () {
-    int arr [] = {12,53,22,10,2};
-    QuickSort(arr,0,4);
-    for(int i = 0; i<=4;i++) cout<<arr[i]<<" ";
+int main() {
+    int arr[] = {12,3,65,19,33};
+    
+    CountSort(arr,5);
+
+    for(int i=0;i<5;i++) cout<<arr[i]<<" ";
+
+    return 0;
 }
