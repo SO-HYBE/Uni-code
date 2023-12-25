@@ -1,32 +1,44 @@
-#include<iostream>
+#include<iostream> 
 using namespace std;
 
-void CountSort(int arr[], int size){
-    int freq[1000]={};
-    for(int i=0; i<size;i++) freq[arr[i]]++;
+int arr[100], size = 100, top=-1;
 
-    int prefix[1000];
-    prefix[0] = freq[0];
-    for(int i = 1; i<1000;i++) prefix[i] = prefix[i-1] + freq[i];
+bool isEmpty(){
+    return top==-1;
+}
 
-    int output[size];
-    for(int i=size-1; i>=0;i--){
-        int k = prefix[arr[i]];
-        output[k-1] = arr[i];
-        prefix[arr[i]] -= 1;
-    }
+bool isFull(){
+    return top>=size-1;
+}
 
-    for(int i=0;i<size;i++){
-        arr[i]=output[i];
+void push(int item){
+    if(isFull()) cout<<"The stack is full."<<endl;
+    else{
+        top++;
+        arr[top] = item;
     }
 }
 
-int main() {
-    int arr[] = {12,3,65,19,33};
-    
-    CountSort(arr,5);
+void pop(){
+    if(isEmpty()) cout<<"The stack is empty."<<endl;
+    else{
+        top--;
+    }
+}
 
-    for(int i=0;i<5;i++) cout<<arr[i]<<" ";
+void display(){
+    if(isEmpty()) cout<<"The stack is empty."<<endl;
+    else{
+        for(int i=top;i>=0;i--) cout<<arr[i]<<endl;
+    }
+}
 
+int main(){
+    push(10); push(5); push(100); push(50);
+    display();
+    pop();
+    display();
+    push(150);
+    display();
     return 0;
 }
