@@ -1,44 +1,53 @@
-#include<iostream> 
+#include<iostream>
 using namespace std;
 
-int arr[100], size = 100, top=-1;
+int arr[3], size= 3, front = -1, back = -1;
 
 bool isEmpty(){
-    return top==-1;
+    return (front==-1 && back ==-1);
 }
 
 bool isFull(){
-    return top>=size-1;
+    return back>=size-1;
 }
 
-void push(int item){
-    if(isFull()) cout<<"The stack is full."<<endl;
+void enqueue (int item){
+    if(isFull()) cout<<"The queue is full."<<endl;
     else{
-        top++;
-        arr[top] = item;
+        if(front==-1) front =0;
+        back++;
+        arr[back] = item; 
     }
 }
 
-void pop(){
-    if(isEmpty()) cout<<"The stack is empty."<<endl;
+void dequeue (){
+    if(isEmpty()) cout<<"The queue is empty.";
     else{
-        top--;
+        if(front == back) front = back = -1;
+        else{
+            front++;
+        }
     }
 }
 
-void display(){
-    if(isEmpty()) cout<<"The stack is empty."<<endl;
+void showFront(){
+    if(isEmpty()) cout<<"The queue is empty.";
+    else cout<<"The element at the front is : "<< arr[front]<<endl;
+}
+
+void display (){
+    if(isEmpty()) cout<<"The queue is empty.";
     else{
-        for(int i=top;i>=0;i--) cout<<arr[i]<<endl;
+        for(int i = front; i<=back; i++)cout<<arr[i]<<endl;
     }
 }
 
-int main(){
-    push(10); push(5); push(100); push(50);
-    display();
-    pop();
-    display();
-    push(150);
-    display();
-    return 0;
+int main() {
+enqueue(10);enqueue(20);enqueue(5); enqueue(200);
+display();
+dequeue();
+display();
+enqueue(150);
+display();
+return 0;
 }
