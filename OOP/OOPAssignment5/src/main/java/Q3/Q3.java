@@ -10,6 +10,9 @@ package Q3;
  */
 public class Q3 {
     public static void main(String[] args) {
-        
+         Cylinder c1 = new Cylinder(7,10);
+         System.out.println("The area of the top circle in the cylinder is: " + c1.getArea());
+         c1.printVolume();
+         
     }
 }
